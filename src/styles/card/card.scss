@@ -1,0 +1,31 @@
+.card {
+    min-height: 25px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-top {
+    width: 250px;
+    height: 30px;
+    background-color: #043d66;
+}
+
+.card-left {
+    width: 30px;
+    height: 120px;
+    background-color: #043d66;
+}
+
+.card-main {
+    width: 250px;
+    height: 120px;
+    background-color: #580c44;
+}
+
+.card-action {
+    width: 70px;
+    height: 50px;
+    background-color: #103956;
+}
