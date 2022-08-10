@@ -1,4 +1,6 @@
 export interface ICard {
-    className: string
-    children: any
+    className: string;
+    onClick?: void;
+    children: any;
 }
+ 
