@@ -62,13 +62,13 @@ const Home = () => {
                     id: 1,
                     status: null,
                     type: "card-main",
-                    info: null,
+                    info: <BiDislike size="2.5em" color="white" />,
                 },
                 {
                     id: 2,
                     status: "succes",
                     type: "card-main",
-                    info: null,
+                    info: starticon,
                 },
                 {
                     id: 3,
@@ -96,7 +96,7 @@ const Home = () => {
                     id: 5,
                     status: "succes",
                     type: "card-main",
-                    info: null,
+                    info: <BiLike size="2.5em" color="white" />,
                 },
                 {
                     id: 6,
@@ -140,13 +140,7 @@ const Home = () => {
         const min = 1
         const max = 10
         const startNum = Math.floor(Math.random() * (max - min)) + min
-        for (let i = 0; i < data.length; i++) {
-            data[i].row.forEach((el) => {
-                if (el.id === startNum) {
-                    el.info = starticon
-                }
-            })
-        }
+        console.log("startNum", startNum)
     }
 
     return (
