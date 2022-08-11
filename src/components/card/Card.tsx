@@ -1,14 +1,14 @@
 import { FC } from "react"
 
 // styles
-import "../../styles/card/card.scss"
+import "styles/card/card.scss"
 
 // type
-import { ICard } from "../types/types"
+import { ICard } from "components/types/types"
 
-const Card: FC<ICard> = ({ className, onClick, children }) => {
+const Card: FC<ICard> = ({ className, onHandleClick, children }) => {
     return (
-        <div className={"card " + className} onClick={onClick}>
+        <div className={"card " + className} onClick={onHandleClick}>
             {children}
         </div>
     )

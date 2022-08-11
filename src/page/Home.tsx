@@ -1,21 +1,31 @@
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
+import { useDispatch } from "react-redux"
+
+// store
+import { GameActionCreators } from "store/reducers/game/actionCreators"
+
+// hooks
+import { useTypedSelector } from "hooks/useTypedSelector"
 
 // components
-import Container from "../components/container/Container"
-import Header from "../components/header/Header"
-import Card from "../components/card/Card"
-import { starticon } from "../components/icon/icon"
+import Container from "components/container/Container"
+import Header from "components/header/Header"
+import Step from "components/step/Step"
+import Platform from "components/platform/Platform"
 
 // styles
-import "../styles/home/home.scss"
-import Step from "../components/step/Step"
-import Platform from "../components/platform/Platform"
+import "styles/home/home.scss"
 
 const Home = () => {
     const [data, setData] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9])
-    let [position, setPosition] = useState<number>(1)
-    const [startPosition, setStartPosition] = useState<number>(1)
     const [stepKeys, setStepKeys] = useState<Array<number>>([])
+
+    let { position } = useTypedSelector((state) => state.game)
+    let { startPosition } = useTypedSelector((state) => state.game)
+    const { gameOn } = useTypedSelector((state) => state.game)
+    const { steps } = useTypedSelector((state) => state.game)
+
+    const dispatch = useDispatch()
 
     const randomNumber = (min: number, max: number) => {
         return Math.floor(Math.random() * (max - min + 1)) + min
@@ -23,35 +33,11 @@ const Home = () => {
 
     const startGame = () => {
         position = randomNumber(1, 9)
-        setPosition(position)
-        setStartPosition(position)
+        startPosition = position
+        dispatch(GameActionCreators.setPosition(position))
+        dispatch(GameActionCreators.setStartPosition(position))
+        dispatch(GameActionCreators.setGameOn(true))
         generateSteps()
-        console.log("aaa", position)
-    }
-    const right = 1
-    const left = -1
-    const top = -3
-    const bottom = 3
-
-    // click card
-    const clickHundler = (userPosition: number) => {
-        if (userPosition === position) {
-            alert("succes")
-        } else {
-            alert("error")
-        }
-    }
-
-    const steps: { [key: number]: Array<number> } = {
-        1: [right, bottom],
-        2: [left, right, bottom],
-        3: [left, bottom],
-        4: [top, right, bottom],
-        5: [left, top, right, bottom],
-        6: [left, top, bottom],
-        7: [top, right],
-        8: [left, top, right],
-        9: [left, top],
     }
 
     const generateStep = () => {
@@ -64,18 +50,18 @@ const Home = () => {
     const renderStep = () => {
         const step = generateStep()
         position = position + step
-        setPosition(position)
-        console.log("step pos" + position, position + step)
-
+        dispatch(GameActionCreators.setPosition(position))
         return step
     }
 
     const generateSteps = () => {
-        const keys: Array<number> = []
-        for (let i = 0; i < 8; i++) {
+        for (let i = 1; i < 9; i++) {
             setTimeout(() => {
                 stepKeys.push(renderStep())
                 setStepKeys([...stepKeys])
+                if (i === 8) {
+                    dispatch(GameActionCreators.setGameOn(false))
+                }
             }, 2000 * i)
         }
     }
@@ -95,7 +81,6 @@ const Home = () => {
                                 index={item}
                                 startPosition={startPosition}
                                 key={item + "game"}
-                                onClick={() => clickHundler(item)}
                             />
                         )
                     })}

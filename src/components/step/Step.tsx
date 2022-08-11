@@ -1,11 +1,10 @@
+import React from "react"
+
 // components
-import Card from "../card/Card"
+import Card from "components/card/Card"
 
 // icons
 import {
-    BiLike,
-    BiDislike,
-    BiStar,
     BiLeftArrowAlt,
     BiRightArrowAlt,
     BiArrowFromBottom,
