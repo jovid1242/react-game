@@ -6,6 +6,6 @@ export interface ICard {
 
 export interface IPlatform {
     index: number;
-    position: number;
+    startPosition: number;
     onClick?: () => void;
 }

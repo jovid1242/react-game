@@ -93,7 +93,7 @@ const Home = () => {
                         return (
                             <Platform
                                 index={item}
-                                position={startPosition}
+                                startPosition={startPosition}
                                 key={item + "game"}
                                 onClick={() => clickHundler(item)}
                             />
