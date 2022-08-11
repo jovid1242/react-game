@@ -8,7 +8,7 @@ import { ICard } from "../types/types"
 
 const Card: FC<ICard> = ({ className, onClick, children }) => {
     return (
-        <div className={"card " + className} onClick={() => onClick}>
+        <div className={"card " + className} onClick={onClick}>
             {children}
         </div>
     )
