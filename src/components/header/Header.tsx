@@ -1,7 +1,7 @@
 import { FC } from "react"
 
 // styles
-import "../../styles/header/header.scss"
+import "styles/header/header.scss"
 
 // type of props
 interface HeaderProps {
