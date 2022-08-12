@@ -4,11 +4,11 @@ import React, { FC, useState } from "react"
 import { useTypedSelector } from "hooks/useTypedSelector"
 
 // component
-import Card from "components/card/Card"
+import Card from "components/card"
 import { starticon } from "components/icon/icon"
 
 // models
-import { IPlatform } from "components/types/types"
+import { IPlatform } from "components/models"
 
 // icons
 import { BiDislike, BiLike, BiStar } from "react-icons/bi"
@@ -19,33 +19,23 @@ const starIcon = <BiStar size="2.5em" color="white" />
 
 const Platform: FC<IPlatform> = ({ index, startPosition }) => {
     const [dataIcon, setDataIcon] = useState(<></>)
-    //
-    const { gameOn } = useTypedSelector((state) => state.game)
-    const { position } = useTypedSelector((state) => state.game)
+    const { gameOn, position } = useTypedSelector((state) => state.game)
 
-    const endgame = () => {
+    const endGame = () => {
         window.location.reload()
     }
 
     // click card
     const handleClick = () => {
-        if (!gameOn) {
-            if (index === position) {
-                setDataIcon(likeIcon)
-                endgame()
-            } else {
-                setDataIcon(disLikeIcon)
-                endgame()
-            }
-        }
+        if (gameOn) return
+        setDataIcon(index === position ? likeIcon : disLikeIcon)
+        endGame()
     }
 
     return (
-        <>
-            <Card className="card-main" onHandleClick={handleClick}>
-                {index === startPosition ? starticon : dataIcon}
-            </Card>
-        </>
+        <Card className="card-main" onHandleClick={handleClick}>
+            {index === startPosition ? starticon : dataIcon}
+        </Card>
     )
 }
 

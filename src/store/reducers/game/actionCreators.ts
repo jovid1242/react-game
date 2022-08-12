@@ -1,4 +1,6 @@
 import { AppDispatch } from "store"
+
+// types
 import {
     GameActions,
     SetPositionAction,
