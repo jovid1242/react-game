@@ -6,6 +6,7 @@ Project uses a number of open source projects to work properly:
 
 -   [React](https://reactjs.org/) - A JavaScript library for building user interfaces
 -   [Redux](https://redux.js.org/) - A Predictable State Container for JS Apps
+-   [TypeScript](https://www.typescriptlang.org/) - TypeScript is JavaScript with syntax for types.
 -   [Scss](https://sass-scss.ru/) - Scss
 
 # How to:
