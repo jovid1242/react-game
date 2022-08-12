@@ -12,6 +12,8 @@ import Container from "components/container/Container"
 import Header from "components/header/Header"
 import Step from "components/step/Step"
 import Platform from "components/platform/Platform"
+import TopLayout from "components/layout/TopLayout"
+import LeftLayout from "components/layout/LeftLayout"
 
 // styles
 import "styles/home/home.scss"
@@ -71,24 +73,27 @@ const Home = () => {
     }, [])
 
     return (
-        <div>
+        <div className="home">
             <Container>
-                <Header title="Лабирант" />
-                <div className="row">
-                    {data?.map((item) => {
-                        return (
-                            <Platform
-                                index={item}
-                                startPosition={startPosition}
-                                key={item + "game"}
-                            />
-                        )
-                    })}
-                </div>
-
-                <div className="action">
+                <div className="home__wrapper">
+                    <Header title="Лабирант" />
+                    <TopLayout />
+                    <LeftLayout />
                     <div className="row">
-                        <Step steps={stepKeys} />
+                        {data?.map((item) => {
+                            return (
+                                <Platform
+                                    index={item}
+                                    startPosition={startPosition}
+                                    key={item + "game"}
+                                />
+                            )
+                        })}
+                    </div>
+                    <div className="action">
+                        <div className="row">
+                            <Step steps={stepKeys} />
+                        </div>
                     </div>
                 </div>
             </Container>

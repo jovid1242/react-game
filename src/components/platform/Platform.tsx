@@ -23,14 +23,19 @@ const Platform: FC<IPlatform> = ({ index, startPosition }) => {
     const { gameOn } = useTypedSelector((state) => state.game)
     const { position } = useTypedSelector((state) => state.game)
 
+    const endgame = () => {
+        window.location.reload()
+    }
+
     // click card
     const handleClick = () => {
         if (!gameOn) {
-            console.log("index,", index === position)
             if (index === position) {
                 setDataIcon(likeIcon)
+                endgame()
             } else {
                 setDataIcon(disLikeIcon)
+                endgame()
             }
         }
     }

@@ -1,3 +1,12 @@
+.home__wrapper {
+    position: relative;
+    .left-bar {
+        position: absolute;
+        content: "";
+        left: 75px;
+    }
+}
+
 .action {
     margin: 0 auto;
 }
