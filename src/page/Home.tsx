@@ -8,12 +8,11 @@ import { GameActionCreators } from "store/reducers/game/actionCreators"
 import { useTypedSelector } from "hooks/useTypedSelector"
 
 // components
-import Container from "components/container/Container"
-import Header from "components/header/Header"
-import Step from "components/step/Step"
+import Header from "components/header"
+import Step from "components/step"
 import Platform from "components/platform/Platform"
-import TopLayout from "components/layout/TopLayout"
-import LeftLayout from "components/layout/LeftLayout"
+import TopLayout from "components/layouts/TopLayout"
+import LeftLayout from "components/layouts/LeftLayout"
 
 // styles
 import "styles/home/home.scss"
@@ -22,10 +21,9 @@ const Home = () => {
     const [data, setData] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9])
     const [stepKeys, setStepKeys] = useState<Array<number>>([])
 
-    let { position } = useTypedSelector((state) => state.game)
-    let { startPosition } = useTypedSelector((state) => state.game)
-    const { gameOn } = useTypedSelector((state) => state.game)
-    const { steps } = useTypedSelector((state) => state.game)
+    let { position, startPosition, steps } = useTypedSelector(
+        (state) => state.game
+    )
 
     const dispatch = useDispatch()
 
@@ -74,7 +72,7 @@ const Home = () => {
 
     return (
         <div className="home">
-            <Container>
+            <div className="container">
                 <div className="home__wrapper">
                     <Header title="Лабирант" />
                     <TopLayout />
@@ -96,7 +94,7 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-            </Container>
+            </div>
         </div>
     )
 }

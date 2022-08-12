@@ -3,8 +3,8 @@ import { FC } from "react"
 // styles
 import "styles/card/card.scss"
 
-// type
-import { ICard } from "components/types/types"
+// models
+import { ICard } from "components/models"
 
 const Card: FC<ICard> = ({ className, onHandleClick, children }) => {
     return (
