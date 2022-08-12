@@ -31,3 +31,7 @@ body {
 .text-white {
     color: #fff;
 }
+
+.mb2 {
+    margin-bottom: 10px;
+}
